@@ -55,9 +55,9 @@ The agent's memory stores Alex's four product-specific Cal.com links. Each link'
 
 | Link | Slug |
 |---|---|
-| `cal.com/<your-cal-handle>/ai-seo-website-build` | `ai-seo-website-build` |
-| `cal.com/<your-cal-handle>/real-estate-ai-automation-consult` | `real-estate-ai-automation-consult` |
-| `cal.com/<your-cal-handle>/direct-mail-consult` | `direct-mail-consult` |
+| `cal.com/<your-cal-handle>/brand-a-project-call` | `brand-a-project-call` |
+| `cal.com/<your-cal-handle>/brand-a-consult` | `brand-a-consult` |
+| `cal.com/<your-cal-handle>/brand-b-consult` | `brand-b-consult` |
 | `cal.com/<your-cal-handle>/30min` | `30min` |
 
 The username is always `<your-cal-handle>`.

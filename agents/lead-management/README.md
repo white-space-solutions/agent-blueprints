@@ -8,12 +8,14 @@ One agent, one job: every inbound reply, form fill, voice call and booking
 for two brands runs through it, and its only metric is qualified calls booked
 on the owner's calendar.
 
-**Placeholders.** The owner is `Alex`, the businesses are `Brand A` (AI
-automation) and `Brand B` (direct mail) at `brand-a.example.com` and
-`brand-b.example.com`, the booking handle is `<your-cal-handle>`, and record
-ids are `<...>`. Search and replace those and the prompt reads as yours. The
-example industry (real estate investors) is left in because a prompt with no
-worked example is harder to adapt than one with the wrong one.
+**Placeholders.** See the table in the root README. In short: the owner is
+`Alex`, the outbound voice agent is `Ava`, the businesses are `Brand A` (a
+software or automation offer) and `Brand B` (a done-with-you service), product
+lines are `Brand A Automation / Retainer / Project / Custom` and
+`Brand B Service`, booking links are `brand-a-consult`, `brand-a-project-call`,
+`brand-b-consult` and `30min`, and record ids are `<...>`. One brand? Keep
+Brand A and delete every Brand B sentence; the routing logic collapses
+cleanly.
 
 ## What is here
 

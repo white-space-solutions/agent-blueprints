@@ -9,7 +9,7 @@ Usage:
     export CAL_API_KEY=cal_live_...
     python cal_com.py list-event-types --username <your-cal-handle>
     python cal_com.py get-availability --event-type-id 123 --start 2026-08-16 --end 2026-08-23
-    python cal_com.py get-availability --event-type-slug direct-mail-consult --username <your-cal-handle> --start 2026-08-16 --end 2026-08-23
+    python cal_com.py get-availability --event-type-slug brand-b-consult --username <your-cal-handle> --start 2026-08-16 --end 2026-08-23
     python cal_com.py create-booking --event-type-id 123 --start "2026-08-18T14:00:00Z" --attendee-name "John" --attendee-email "john@example.com" --timezone "America/New_York"
 """
 

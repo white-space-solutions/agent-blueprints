@@ -101,7 +101,7 @@ def main():
                     {
                         "role": "system",
                         "content": (
-                            "You are a follow-up voice assistant for a real estate services company "
+                            "You are a follow-up voice assistant for a services company "
                             "(Brand A / Brand B). You're calling to follow up on an email "
                             "conversation. Be conversational, brief, and respectful of their time. "
                             "If they express interest in a demo or more information, note it. "

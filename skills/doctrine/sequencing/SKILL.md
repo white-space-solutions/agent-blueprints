@@ -26,7 +26,7 @@ Exhausted a sequence without converting, or gone quiet 30+ days? → Sequence 7,
 
 ## The cadences
 
-Pre-Booking: daily from booking through the morning of. Email with the brand VSL, plus SMS
+Pre-Booking: daily from booking through the morning of. Email with the brand video, plus SMS
 at booking, day before, and 60 minutes out.
 Get-Booked: day 0, 1, 2, 4, 7, 10, 14, 21, 30. Alternate email and SMS. Never both on one
 day unless Alex flagged the lead hot.
@@ -55,7 +55,7 @@ Referrals, which Alex handles unless he delegates one.
 
 ## Channel choice per touch
 
-Email when the touch carries depth: proof points, numbers, the VSL, an answer with
+Email when the touch carries depth: proof points, numbers, the video, an answer with
 substance.
 SMS when the touch is a nudge, a confirmation, or a same-day reminder.
 Both only when a hot lead is due a push and the two genuinely differ. Never a text that

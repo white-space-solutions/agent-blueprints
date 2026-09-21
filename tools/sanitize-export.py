@@ -28,6 +28,9 @@ LOCAL = ROOT / "tools" / "redactions.local.json"
 # One regex per line: your brand names, people, anything that must never ship.
 # Gitignored, because the list itself is a list of things you do not publish.
 FORBIDDEN_LOCAL = ROOT / "tools" / "forbidden.local.txt"
+# Committed: generalizations (product lines, booking slugs, industry words)
+# that turn one business's definitions into a template's.
+NORMALIZE = ROOT / "tools" / "normalize.json"
 
 GENERIC = [
     # Hyperagent webhook secrets quoted in skill docs
@@ -47,6 +50,8 @@ FORBIDDEN = [
     (r"\+1(?!\d{3}555)\d{10}\b", "phone number"),
     (r"\b(?=[A-Za-z0-9_\-]*\d)(?=[A-Za-z0-9_\-]*[A-Za-z])[A-Za-z0-9_\-]{40,}\b", "long token-like string"),
     (r"\bemailacct_[A-Za-z0-9]{12,}", "Instantly email account id"),
+    # Prefixed opaque ids (Close's agentconfig_, lead_, cf_ and friends)
+    (r"\b[a-z]{2,12}_[A-Za-z0-9]{18,}\b", "prefixed record id"),
 ]
 
 
@@ -57,11 +62,25 @@ def load_local() -> dict:
     return json.loads(LOCAL.read_text())
 
 
-def redact(text: str, local: dict) -> str:
+def apply_map(text: str, mapping: dict) -> str:
     # Longest strings first, so "Brand One Solutions" is replaced before "Brand One"
     # and "Owner's" before "Owner".
-    for old in sorted(local, key=len, reverse=True):
-        text = text.replace(old, local[old])
+    for old in sorted(mapping, key=len, reverse=True):
+        if old.startswith("_"):
+            continue
+        text = text.replace(old, mapping[old])
+        # The export is JSON, so a phrase with a newline or a quote in it
+        # appears escaped there. Replace that spelling too.
+        esc_old, esc_new = json.dumps(old)[1:-1], json.dumps(mapping[old])[1:-1]
+        if esc_old != old:
+            text = text.replace(esc_old, esc_new)
+    return text
+
+
+def redact(text: str, local: dict) -> str:
+    text = apply_map(text, local)
+    if NORMALIZE.exists():
+        text = apply_map(text, json.loads(NORMALIZE.read_text()))
     for pat, rep in GENERIC:
         text = re.sub(pat, rep, text)
     return text

@@ -116,7 +116,7 @@ lead and conversation tables).
 ### 4. Tools
 
 Reads: Instantly, Close, Cal.com, Vapi, the Neon lead tables, live calendar
-availability, Fireflies call notes, Slack.
+availability, call notes, Slack.
 
 Writes (and the gate): Close records and notes (unattended, it is the system
 of record and every write is logged). Outbound email through the brand's Close

@@ -22,7 +22,7 @@ Never cold. SMS is for people who replied, submitted a form, or booked.
 Append " Reply STOP to opt out." to the first SMS to any lead. Not to later ones.
 Honor STOP, UNSUBSCRIBE, "stop texting me" or anything resembling it instantly and
 permanently, across email too.
-If a lead is receiving the voice agent's post-call Send Scheduling Link SMS, do not also text them.
+If a lead is receiving Ava's post-call Send Scheduling Link SMS, do not also text them.
 
 ## Voice
 

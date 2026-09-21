@@ -69,11 +69,11 @@ ENRICHMENT_ACTORS = [
         "store_url": "https://apify.com/compass/google-maps-extractor",
         "description": "Search Google Maps by keyword + location; returns business name, "
                        "address, phone, website, rating, hours, GPS. "
-                       "Great for real estate operators with thin web presence but a GMB listing.",
+                       "Great for small business operators with thin web presence but a GMB listing.",
         "maintained_by": "Compass (Apify team member — effectively Apify-maintained)",
         "pricing": "Pay-per-event: from ~$2.10 / 1,000 places scraped",
         "input_schema": {
-            "searchStringsArray": ["real estate wholesaler"],   # required
+            "searchStringsArray": ["your niche keyword"],   # required
             "locationQuery": "Houston, TX",                     # city / address / polygon
             "maxCrawledPlacesPerSearch": 10,
             "scrapePlaceDetailPage": False,  # True adds $0.002/place for hours, reviews, etc.
@@ -114,7 +114,7 @@ ENRICHMENT_ACTORS = [
         "pricing": "From $4.99 / 1,000 results (pay-per-event)",
         "input_schema": {
             "operationType": "companies",  # 'companies' | 'profiles'
-            "searchTerms": ["Acme Real Estate"],
+            "searchTerms": ["Acme Co"],
             "queryByUrl": False,
             "queryByName": False,
             "maxResults": 3,

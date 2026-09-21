@@ -29,7 +29,7 @@ RunWithCredentials(skillName="lead-enrichment", command="python3 skills/apify/ap
 Crawls a company site via `apify/website-content-crawler`, returns cleaned text. **The default first move** — a prospect's own site tells you what they do, their market, and their scale.
 
 ### `enrich-company --name X [--location Y]`
-Google Maps lookup via `compass/google-maps-extractor`. Useful for real estate operators who have a GMB listing but a thin or absent website — common in this ICP.
+Google Maps lookup via `compass/google-maps-extractor`. Useful for small business operators who have a GMB listing but a thin or absent website — common in this ICP.
 
 ### `run-sync --actor <id> --input '<json>' [--timeout N]`
 Runs and returns dataset items inline. **Hard 300-second ceiling** (HTTP 408 past that). Anything slower must go async.
@@ -73,7 +73,7 @@ When you resolve a lead's identity during enrichment, apply this rule to the Clo
 
 Priority order:
 
-1. **Company name, when cleanly derivable from the domain.** A URL slug that maps to an obviously-branded real estate operator is enough (e.g. `example-home-offers.com` → "Example Home Offers", `example-cash-offer.com` → "Example Cash Offer", `example-houses.com` → "Example Houses", `exampleco.com` → "ExampleCo LLC"). When the slug is ambiguous or opaque (e.g. `abcx.com`, `qwerty.co`, `xyzco.net`), resolve the real brand — `enrich-website` on the domain homepage title is usually sufficient and nearly free. Do **not** guess a brand from an opaque slug.
+1. **Company name, when cleanly derivable from the domain.** A URL slug that maps to an obviously-branded small business operator is enough (e.g. `example-home-offers.com` → "Example Home Offers", `example-cash-offer.com` → "Example Cash Offer", `example-houses.com` → "Example Houses", `exampleco.com` → "ExampleCo LLC"). When the slug is ambiguous or opaque (e.g. `abcx.com`, `qwerty.co`, `xyzco.net`), resolve the real brand — `enrich-website` on the domain homepage title is usually sufficient and nearly free. Do **not** guess a brand from an opaque slug.
 2. **Full contact name (first + last),** when the domain doesn't yield a company but the contact has a full name in Close, or the email local-part cleanly reveals a full name (e.g. `janedoe@example.com` → "Jane Doe", `johnsmithnyc@example.com` → "John Smith"). Split CamelCase / numeric-suffixed local-parts into a proper given+surname.
 3. **Fallback:** if only a first name is available and nothing in the email or domain resolves a company or surname, leave the lead named as that first name and flag it for manual review — do not fabricate a last name or company.
 

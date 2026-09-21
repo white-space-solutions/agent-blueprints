@@ -589,16 +589,16 @@ def cmd_update_lead(args) -> None:
 
 
 def cmd_create_task(args) -> None:
-    """Create a task on a lead, optionally as an outgoing_call task for the voice agent.
+    """Create a task on a lead, optionally as an outgoing_call task for Ava.
 
     POST /task/
     Two supported types:
       - lead (default): a to-do item. Requires lead_id + text.
-      - outgoing_call: a call the voice agent should place. Requires lead_id + contact_id.
+      - outgoing_call: a call Ava should place. Requires lead_id + contact_id.
 
     The --type flag selects between them. assigned_to accepts a user id
     (user_...) when you want a specific rep; leave it off to leave unassigned.
-    For the voice agent voice: use --type outgoing_call with lead_id + contact_id, and
+    For Ava voice: use --type outgoing_call with lead_id + contact_id, and
     note in --text which Voice Agent to use (Booking Re-Engage vs Lead Qualifier).
     """
     _type = args.type or "lead"
@@ -952,7 +952,7 @@ def build_parser() -> argparse.ArgumentParser:
     # create-task
     p = sub.add_parser(
         "create-task",
-        help="Create a task on a lead (type lead or outgoing_call for the voice agent voice). POST /task/.",
+        help="Create a task on a lead (type lead or outgoing_call for Ava voice). POST /task/.",
     )
     p.add_argument("--lead-id", required=True, dest="lead_id", help="Lead ID (lead_XXX).")
     p.add_argument("--type", default="lead", dest="type", help="lead (default) or outgoing_call.")

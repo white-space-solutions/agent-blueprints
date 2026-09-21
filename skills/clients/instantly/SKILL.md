@@ -90,7 +90,7 @@ The only send path in this skill. Threads an in-thread reply onto an inbound ema
 python3 skills/instantly/instantly.py reply-to-email \
   --eaccount owner@brand-b.example.com \
   --reply-to-uuid <reply-uuid> \
-  --subject "Re: inherited house in Springfield" \
+  --subject "Re: your question" \
   --body-file /tmp/reply.txt \
   --confirm-send
 ```

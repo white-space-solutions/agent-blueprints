@@ -21,10 +21,10 @@ badly or not at all until they are set.
 6. **Tables.** The lead activity ledger is a Hyperagent Table the agent
    maintains. Create it and put its id where the prompt says
    `<ledger-table-id>`.
-7. **Placeholders.** Search the prompt and skills and replace each with your
-   own value: `Alex` (the owner), `Brand A` and `Brand B` and their
-   `example.com` domains, `<your-cal-handle>`, and every `<...>` id
-   (assistant, campaign, table, email account) plus the `+1555` SMS number.
+7. **Placeholders.** Work through the table in the root README: `Alex`,
+   `Ava`, `Brand A` / `Brand B` and their domains and product lines, the
+   booking slugs, `<your-cal-handle>`, every `<...>` id, and the `+1555` SMS
+   number.
 8. **Read-only first.** Three of the four schedules write to the CRM and send
    messages. Run them in read-only mode for a week, read the threads, then
    turn writes on.

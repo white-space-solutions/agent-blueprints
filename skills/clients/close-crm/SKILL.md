@@ -28,8 +28,8 @@ Close separates **Lead** (the company/organization) from **Contact** (a person a
 
 Two brand mailboxes are connected in Close. Map **email_account_id** to brand when sending:
 
-- Brand B / DWY Direct Mail → `<instantly-email-account-id-brand-b>` (owner@brand-b.example.com)
-- Brand A (AI Automation / AI SEO / Website / Custom Build) → `<instantly-email-account-id-brand-a>` (owner@brand-a.example.com)
+- Brand B / Brand B Service → `<instantly-email-account-id-brand-b>` (owner@brand-b.example.com)
+- Brand A (Brand A Automation / Retainer / Project / Custom) → `<instantly-email-account-id-brand-a>` (owner@brand-a.example.com)
 
 ## Lead statuses (guardrails)
 
@@ -75,7 +75,7 @@ Send (or draft) an email through Close (`POST /activity/email/`). **This is the 
 Create and optionally send an SMS activity. `status=outbox` sends immediately (from the primary Close number `+15555550100` unless Alex names another); `status=draft` stages for review. Requires `--local-phone` (Close internal, E.164) and `--remote-phone` (recipient E.164). `--send-in` delays outbox by up to 60s. **Defaults to draft; set outbox only after approval.**
 
 ### `create-task --lead-id X [--type lead|outgoing_call] [--text "..."] [--contact-id Y] [--assigned-to user_Z] [--due-date ISO] [--date YYYY-MM-DD] [--priority high|medium] [--agent-config-id Z]`
-Create a task on a lead. `--type lead` (default) = to-do (requires `--text`); `--type outgoing_call` = request a the voice agent voice call (requires `--contact-id`; note which Voice Agent in `--text`). Leave `--assigned-to` off for unassigned.
+Create a task on a lead. `--type lead` (default) = to-do (requires `--text`); `--type outgoing_call` = request an Ava voice call (requires `--contact-id`; note which Voice Agent in `--text`). Leave `--assigned-to` off for unassigned.
 
 ### `list-pipelines`
 Pipelines with their stages/statuses. Call before any stage change.
@@ -124,7 +124,7 @@ Per endpoint group and per org (~20 RPS per key, 60 RPS org). On 429 the respons
 1. **Sequence pause/unsubscribe status values** — `PUT /sequence_subscription/{id}/` accepts `status`, valid values undocumented in retrieved docs.
 2. **Opportunity `value` units** — likely cents/minor units. **Verify with one test before writing real deal values** (100× error risk).
 3. **SMS `local_phone`** — must be a Close internal number; verify before sending.
-4. **Task `assigned_to` for the voice agent** — whether the voice agent Voice Agents surface as assignable `user_...` ids vs. UI-only is unconfirmed. Test `create-task --type outgoing_call` on a real lead.
+4. **Task `assigned_to` for Ava** — whether Ava Voice Agents surface as assignable `user_...` ids vs. UI-only is unconfirmed. Test `create-task --type outgoing_call` on a real lead.
 
 ## Resolved: find-lead contact email field path (confirmed live 2026-08-05)
 

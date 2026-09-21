@@ -33,8 +33,27 @@ FRAMEWORK.md          role, responsibilities, skills, tools, knowledge, guardrai
 job-card.md           the six questions to answer before building any agent
 ```
 
-Every agent is de-branded the same way: the owner is `Alex`, businesses are
-`Brand A` and `Brand B`, ids are `<...>`. Search and replace, and it is yours.
+## Placeholders
+
+Every agent is de-branded the same way. Search and replace these and the
+prompt, skills and schedules read as yours.
+
+| Placeholder | Stands for |
+|---|---|
+| `Alex` | The business owner. Whoever the agent escalates to and writes as. |
+| `Ava` | The outbound voice agent (Close's native call agent in this build). |
+| `Brand A`, `brand-a.example.com` | A software or automation offer. |
+| `Brand B`, `brand-b.example.com` | A done-with-you service offer. One brand? Delete the Brand B sentences. |
+| `Brand A Automation`, `Brand A Retainer`, `Brand A Project`, `Brand A Custom`, `Brand B Service` | Product lines, the values of the CRM's `Product Line` field. |
+| `brand-a-consult`, `brand-a-project-call`, `brand-b-consult`, `30min` | Cal.com event slugs, one per product line plus a fallback. |
+| `<your-cal-handle>` | Your Cal.com username. |
+| `owner@brand-a.example.com` | The mailbox the agent sends from. |
+| `<...>` | Any record id: assistant, campaign, table, email account, webhook endpoint. |
+| `owner-operators in your niche` | The ICP. Say who, in one line. |
+
+The stack is real and named (Close, Instantly, Cal.com, Vapi, Neon, Apify,
+Slack) because the client skills wrap those APIs. Swapping one means
+rewriting that skill; the doctrine skills do not care.
 
 Skills are shared across agents on purpose. Most of what transfers between
 businesses is in `skills/doctrine/`.
@@ -48,10 +67,13 @@ businesses is in `skills/doctrine/`.
 ## Publishing your own
 
 `tools/sanitize-export.py` turns a raw Hyperagent export into an `agents/`
-folder. It replaces secrets, record ids, phone numbers and names using a
-local, gitignored map (`tools/redactions.example.json` shows the shape) and
-refuses to write if anything secret- or id-shaped survives. Raw exports never
-touch git.
+folder in two passes. First it replaces secrets, record ids, phone numbers
+and real names using a gitignored map (`tools/redactions.example.json` shows
+the shape). Then it applies `tools/normalize.json`, the committed list of
+generalizations that turn one company's definitions (product lines, booking
+slugs, industry words) into the placeholders above. It refuses to write if
+anything secret-, id- or brand-shaped survives (`tools/forbidden.example.txt`).
+Raw exports never touch git.
 
 ---
 
